@@ -1,0 +1,249 @@
+rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Application: SIGUR SD (Supervisi Guru & Tenaga Kependidikan)
+// Primary Schools: SDN Kandangan I & SDN Kandangan II Tosari
+//
+// This security rules file assumes the following data structures:
+//
+// 1. Collection: managed_schools
+//    Document ID: {docId} (e.g., 'kandangan-1', 'kandangan-2')
+//    Fields:
+//      - id: string (required, 2-50 chars) - School identifier
+//      - name: string (required, 3-200 chars) - Official school name (e.g. 'SDN KANDANGAN I TOSARI')
+//      - npsn: string (required, 6-20 chars) - Nomor Pokok Sekolah Nasional
+//      - shortName: string (required, 2-100 chars) - Colloquial name (e.g. 'SDN Kandangan 1')
+//      - statusLabel: string (required, 2-100 chars) - Operational status label
+//      - badgeColor: string (optional, allowed: emerald|blue|amber|purple|teal)
+//      - address: string (optional, max 500 chars) - Physical location address
+//      - updatedAt: timestamp (optional) - Modification timestamp
+//      - updatedBy: string (optional, max 150 chars) - UID or email of updater
+//      - createdAt: timestamp (optional, immutable) - Creation timestamp
+//      - createdBy: string (optional, max 150 chars, immutable) - Creator identifier
+//
+// 2. Collection: schools
+//    Document ID: {schoolId} (e.g., 'kandangan-1', 'kandangan-2')
+//    Fields:
+//      - settings: map (required)
+//          * schoolName: string (required, 3-200 chars)
+//          * npsn: string (required, 6-20 chars)
+//          * address: string (required, 5-500 chars)
+//          * schoolYear: string (required, 4-25 chars, e.g. '2025/2026')
+//          * semester: string (required, enum: 'Ganjil' | 'Genap')
+//          * principalName: string (required, 2-150 chars)
+//          * principalNip: string (required, max 40 chars)
+//          * principalTitle: string (required, 2-150 chars)
+//          * supervisorName: string (required, 2-150 chars)
+//          * supervisorNip: string (required, max 40 chars)
+//          * supervisorArea: string (required, max 150 chars)
+//          * supervisorPhone: string (required, max 30 chars)
+//          * logoLeft: string (required, max 150000 chars, data URI / SVG / URL)
+//          * logoRight: string (required, max 150000 chars, data URI / SVG / URL)
+//      - teachers: list of maps (required, max 200 items)
+//      - observations: list of maps (required, max 1000 items)
+//      - adminAudits: list of maps (required, max 500 items)
+//      - updatedAt: timestamp (required) - Timestamp of last modification
+//      - updatedBy: string (required, 1-150 chars) - User email or UID who updated
+//      - id: string (optional, immutable, matches schoolId)
+//      - createdAt: timestamp (optional, immutable)
+//      - createdBy: string (optional, max 150 chars, immutable)
+//      - schemaVersion: string or int (optional)
+//
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Authentication & RBAC Helper Functions
+    // ===============================================================
+
+    // Check if the user is authenticated with Firebase Auth
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Check if user is System Administrator (via custom claims or bootstrap emails)
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.get('admin', false) == true ||
+        request.auth.token.get('role', '') == 'admin' ||
+        (request.auth.token.email != null && (
+          request.auth.token.email == 'admin@sdnkandangan1.sch.id' ||
+          request.auth.token.email == 'admin@sigur-sd.id'
+        ))
+      );
+    }
+
+    // Check if user is Kepala Sekolah (via custom claims or bootstrap emails)
+    function isPrincipal() {
+      return isAuthenticated() && (
+        request.auth.token.get('role', '') == 'kepala_sekolah' ||
+        (request.auth.token.email != null && (
+          request.auth.token.email == 'akh.shodikin@gmail.com' ||
+          request.auth.token.email == 'akh.shodikin@admin.belajar.id' ||
+          request.auth.token.email.matches('.*@admin\\.belajar\\.id$')
+        ))
+      );
+    }
+
+    // Check if user is Pengawas Sekolah / Supervisor
+    function isSupervisor() {
+      return isAuthenticated() && (
+        request.auth.token.get('role', '') == 'pengawas' ||
+        (request.auth.token.email != null && (
+          request.auth.token.email == 'syamsul.hadi@pengawas.belajar.id' ||
+          request.auth.token.email.matches('.*@pengawas\\.belajar\\.id$')
+        ))
+      );
+    }
+
+    // Check if user has school management authority (Admin or Principal)
+    function isSchoolManager() {
+      return isAdmin() || isPrincipal();
+    }
+
+    // ===============================================================
+    // Domain Validator Functions (Validator Function Pattern)
+    // ===============================================================
+
+    // Validate settings map structure and bounds
+    function isValidSchoolSettings(settings) {
+      return settings is map &&
+        settings.keys().hasAll([
+          'schoolName', 'npsn', 'address', 'schoolYear', 'semester',
+          'principalName', 'principalNip', 'principalTitle',
+          'supervisorName', 'supervisorNip', 'supervisorArea', 'supervisorPhone',
+          'logoLeft', 'logoRight'
+        ]) &&
+        settings.keys().hasOnly([
+          'schoolName', 'npsn', 'address', 'schoolYear', 'semester',
+          'principalName', 'principalNip', 'principalTitle',
+          'supervisorName', 'supervisorNip', 'supervisorArea', 'supervisorPhone',
+          'logoLeft', 'logoRight'
+        ]) &&
+        settings.schoolName is string && settings.schoolName.size() >= 3 && settings.schoolName.size() <= 200 &&
+        settings.npsn is string && settings.npsn.size() >= 6 && settings.npsn.size() <= 20 &&
+        settings.address is string && settings.address.size() >= 5 && settings.address.size() <= 500 &&
+        settings.schoolYear is string && settings.schoolYear.size() >= 4 && settings.schoolYear.size() <= 25 &&
+        settings.semester is string && settings.semester in ['Ganjil', 'Genap'] &&
+        settings.principalName is string && settings.principalName.size() >= 2 && settings.principalName.size() <= 150 &&
+        settings.principalNip is string && settings.principalNip.size() <= 40 &&
+        settings.principalTitle is string && settings.principalTitle.size() >= 2 && settings.principalTitle.size() <= 150 &&
+        settings.supervisorName is string && settings.supervisorName.size() >= 2 && settings.supervisorName.size() <= 150 &&
+        settings.supervisorNip is string && settings.supervisorNip.size() <= 40 &&
+        settings.supervisorArea is string && settings.supervisorArea.size() <= 150 &&
+        settings.supervisorPhone is string && settings.supervisorPhone.size() <= 30 &&
+        settings.logoLeft is string && settings.logoLeft.size() <= 150000 &&
+        settings.logoRight is string && settings.logoRight.size() <= 150000;
+    }
+
+    // Validate complete school document bundle
+    function isValidSchool(data, schoolId) {
+      return data.keys().hasAll([
+          'settings', 'teachers', 'observations', 'adminAudits', 'updatedAt', 'updatedBy'
+        ]) &&
+        data.keys().hasOnly([
+          'settings', 'teachers', 'observations', 'adminAudits',
+          'updatedAt', 'updatedBy', 'id', 'createdAt', 'createdBy', 'schemaVersion'
+        ]) &&
+        isValidSchoolSettings(data.settings) &&
+        data.teachers is list && data.teachers.size() <= 200 &&
+        data.observations is list && data.observations.size() <= 1000 &&
+        data.adminAudits is list && data.adminAudits.size() <= 500 &&
+        data.updatedAt is timestamp &&
+        data.updatedBy is string && data.updatedBy.size() >= 1 && data.updatedBy.size() <= 150 &&
+        (!('id' in data) || (data.id is string && data.id == schoolId)) &&
+        (!('createdAt' in data) || data.createdAt is timestamp) &&
+        (!('createdBy' in data) || (data.createdBy is string && data.createdBy.size() <= 150)) &&
+        (!('schemaVersion' in data) || (data.schemaVersion is string || data.schemaVersion is int));
+    }
+
+    // Ensure immutable fields on school bundle are not changed on update
+    function areImmutableSchoolFieldsUnchanged() {
+      return (!('id' in resource.data) || request.resource.data.id == resource.data.id) &&
+             (!('createdAt' in resource.data) || request.resource.data.createdAt == resource.data.createdAt) &&
+             (!('createdBy' in resource.data) || request.resource.data.createdBy == resource.data.createdBy);
+    }
+
+    // Validate managed school metadata document
+    function isValidManagedSchool(data, docId) {
+      return data.keys().hasAll(['id', 'name', 'npsn', 'shortName', 'statusLabel']) &&
+        data.keys().hasOnly([
+          'id', 'name', 'npsn', 'shortName', 'statusLabel',
+          'badgeColor', 'address', 'updatedAt', 'updatedBy', 'createdAt', 'createdBy'
+        ]) &&
+        data.id is string && data.id.size() >= 2 && data.id.size() <= 50 &&
+        data.name is string && data.name.size() >= 3 && data.name.size() <= 200 &&
+        data.npsn is string && data.npsn.size() >= 6 && data.npsn.size() <= 20 &&
+        data.shortName is string && data.shortName.size() >= 2 && data.shortName.size() <= 100 &&
+        data.statusLabel is string && data.statusLabel.size() >= 2 && data.statusLabel.size() <= 100 &&
+        (!('badgeColor' in data) || (data.badgeColor is string && data.badgeColor in ['emerald', 'blue', 'amber', 'purple', 'teal'])) &&
+        (!('address' in data) || (data.address is string && data.address.size() <= 500)) &&
+        (!('updatedAt' in data) || data.updatedAt is timestamp) &&
+        (!('updatedBy' in data) || (data.updatedBy is string && data.updatedBy.size() <= 150)) &&
+        (!('createdAt' in data) || data.createdAt is timestamp) &&
+        (!('createdBy' in data) || (data.createdBy is string && data.createdBy.size() <= 150));
+    }
+
+    // Ensure immutable fields on managed school document are not changed on update
+    function areImmutableManagedSchoolFieldsUnchanged() {
+      return (!('id' in resource.data) || request.resource.data.id == resource.data.id) &&
+             (!('createdAt' in resource.data) || request.resource.data.createdAt == resource.data.createdAt) &&
+             (!('createdBy' in resource.data) || request.resource.data.createdBy == resource.data.createdBy);
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    // 1. Managed Schools Registry
+    // Stores registry metadata of schools managed by the principal/supervisor
+    match /managed_schools/{docId} {
+      // Authenticated school personnel can list and read managed school profiles
+      allow read: if isAuthenticated();
+
+      // Only school management (Admin or Principal) can register managed schools
+      allow create: if isSchoolManager() &&
+                    isValidManagedSchool(request.resource.data, docId);
+
+      // School managers can update managed school metadata with strict validation
+      allow update: if isSchoolManager() &&
+                    isValidManagedSchool(request.resource.data, docId) &&
+                    areImmutableManagedSchoolFieldsUnchanged();
+
+      // Only system administrators can delete a registered school entry
+      allow delete: if isAdmin();
+    }
+
+    // 2. School Workspaces & Bundled Data
+    // Stores the complete data bundle for each institution (settings, teachers, observations, audits)
+    match /schools/{schoolId} {
+      // Authenticated school users can read school workspace data
+      allow read: if isAuthenticated();
+
+      // Creating a new school workspace requires school manager authority
+      allow create: if isSchoolManager() &&
+                    isValidSchool(request.resource.data, schoolId);
+
+      // Updating supervision data, notes, or settings requires authentication and full schema validation
+      allow update: if isAuthenticated() &&
+                    isValidSchool(request.resource.data, schoolId) &&
+                    areImmutableSchoolFieldsUnchanged();
+
+      // Deleting an entire school dataset is restricted to system administrators
+      allow delete: if isAdmin();
+    }
+
+    // ===============================================================
+    // Default Deny Rule
+    // ===============================================================
+    // Deny read and write access to all other paths by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+
+  /* Hide everything outside modal-print-a4 when printing from modal */
+  body.printing-modal aside,
+  body.printing-modal header,
+  body.printing-modal nav,
+  body.printing-modal #root > div > *:not(#modal-print-a4):not(:has(#modal-print-a4)),
+  body.printing-modal #root > div > div > *:not(#modal-print-a4):not(:has(#modal-print-a4)),
+  body.printing-modal main > *:not(#modal-print-a4):not(:has(#modal-print-a4)) {
+    display: none !important;
+  }
+
+  body.printing-modal #root > div > div,
+  body.printing-modal main {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  body {
+    background: white !important;
+    color: #0f172a !important;
+    font-size: 10pt;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .print-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+  tr {
+    page-break-inside: avoid;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .signature-block {
+    page-break-inside: avoid !important;
+  }
+
+  #modal-print-a4 {
+    position: static !important;
+    display: block !important;
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+  #modal-print-a4-card {
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #modal-print-a4-viewport {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  #a4-document-container,
+  #a4-admin-document-container {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+  .a4-page, .a4-page-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 8mm 12mm 8mm 12mm !important;
+    margin: 0 auto !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    min-height: 296mm !important;
+    max-height: 297mm !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .a4-page-sheet:last-child {
+    page-break-after: auto !important;
+  }
+}
+
+.a4-page, .a4-page-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 11mm 13mm;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  color: #0f172a;
+  font-size: 9pt;
+  line-height: 1.35;
+  position: relative;
+}
+
+@media (max-width: 840px) {
+  #modal-print-a4-viewport {
+    overflow-x: auto !important;
+  }
+}
