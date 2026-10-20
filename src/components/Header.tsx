@@ -89,8 +89,8 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="no-print mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl shadow-xs border border-slate-200/80">
       <div className="flex items-center space-x-3">
-        <div className="p-2.5 bg-emerald-50 text-emerald-700 rounded-xl border border-emerald-100 flex-shrink-0">
-          <Award className="w-5 h-5" />
+        <div className="w-11 h-11 bg-white rounded-xl border border-slate-200 p-1 flex items-center justify-center flex-shrink-0 shadow-2xs hover:shadow-xs transition">
+          <img src="/logo.png" alt="e-Visi Supervisi Guru" className="w-full h-full object-contain" />
         </div>
         <div>
           <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">{title}</h2>

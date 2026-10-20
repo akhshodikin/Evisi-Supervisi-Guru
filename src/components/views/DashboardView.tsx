@@ -139,15 +139,21 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
       </div>
 
-      {/* GROW Coaching Framework Banner */}
+      {/* GROW Coaching Framework Banner with Official Logo */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 text-white p-5 rounded-2xl shadow-md border border-slate-800">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-          <div className="flex items-start space-x-3">
-            <div className="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg mt-0.5">
-              <Compass className="w-5 h-5" />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div className="flex items-center space-x-3.5">
+            <div className="w-20 h-13 bg-white rounded-xl p-1.5 shadow-sm border border-slate-700/60 hidden sm:flex items-center justify-center flex-shrink-0">
+              <img src="/logo.png" alt="e-Visi Supervisi Guru Alur GROW" className="max-w-full max-h-full object-contain" />
             </div>
             <div>
-              <h3 className="font-bold text-base text-amber-400">Kerangka Supervisi Berbasis Alur GROW Coaching</h3>
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-amber-400/20 text-amber-300 rounded border border-amber-400/30">
+                  e-Visi Supervisi Guru
+                </span>
+                <span className="text-xs text-slate-400">• Alur GROW</span>
+              </div>
+              <h3 className="font-bold text-base text-white mt-1">Kerangka Supervisi Berbasis Alur GROW Coaching</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
                 Pendampingan reflektif tanpa menghakimi untuk perbaikan proses belajar mengajar Kurikulum Merdeka & Pengelolaan Kinerja PMM
               </p>
@@ -155,7 +161,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
           <button
             onClick={onOpenNewObs}
-            className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold shadow-xs transition self-start flex items-center space-x-1.5 flex-shrink-0"
+            className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold shadow-xs transition self-start flex items-center space-x-1.5 flex-shrink-0 cursor-pointer"
           >
             <PlusCircle className="w-3.5 h-3.5" />
             <span>Jadwalkan Observasi</span>

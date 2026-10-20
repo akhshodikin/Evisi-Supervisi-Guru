@@ -368,13 +368,41 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   <button
                     type="button"
                     onClick={() => resetLogoToDefault('right')}
-                    title="Kembalikan ke Logo Bawaan"
+                    title="Kembalikan ke Logo Bawaan Tut Wuri"
                     className="px-2 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg text-[11px] font-semibold transition"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                   </button>
                 </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData(prev => ({ ...prev, logoRight: '/logo.png' }));
+                    onShowToast('Logo Kanan berhasil diatur ke Logo Resmi e-Visi Supervisi Guru!');
+                  }}
+                  className="w-full mt-1.5 py-1 px-2 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 rounded-lg text-[10.5px] font-semibold transition flex items-center justify-center space-x-1 cursor-pointer"
+                >
+                  <span>✦ Gunakan Logo Resmi e-Visi (Alur GROW)</span>
+                </button>
               </div>
+            </div>
+
+            {/* Showcase Banner Logo Resmi Aplikasi e-Visi */}
+            <div className="mt-3 p-3.5 bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 text-white">
+              <div className="flex items-center space-x-3.5">
+                <div className="w-20 h-13 bg-white rounded-xl p-1.5 shadow-sm border border-slate-600 flex items-center justify-center flex-shrink-0">
+                  <img src="/logo.png" alt="e-Visi Supervisi Guru" className="max-w-full max-h-full object-contain" />
+                </div>
+                <div>
+                  <h5 className="font-bold text-xs text-amber-400">Logo Resmi Aplikasi e-Visi Supervisi Guru</h5>
+                  <p className="text-[10.5px] text-slate-300 leading-snug">
+                    Identitas visual resmi bersimbol Buku, Figur Guru-Murid, Panah Peningkatan, dan Alur G-R-O-W Coaching.
+                  </p>
+                </div>
+              </div>
+              <span className="px-2.5 py-1 rounded-md text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 whitespace-nowrap">
+                Aktif di Aplikasi
+              </span>
             </div>
           </div>
 

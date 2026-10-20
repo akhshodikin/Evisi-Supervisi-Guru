@@ -162,21 +162,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <aside className="no-print bg-slate-900 text-white w-full md:w-64 flex-shrink-0 transition-all duration-200 flex flex-col justify-between shadow-xl border-r border-slate-800">
       <div>
-        {/* Brand Header */}
-        <div className="p-4 border-b border-slate-800/80 flex items-center space-x-3 bg-slate-950/40">
-          <div className="w-10 h-10 bg-emerald-600/90 rounded-xl flex items-center justify-center text-white font-bold shadow-md flex-shrink-0 border border-emerald-400/40">
-            <School className="w-5 h-5 text-amber-300" />
+        {/* Brand Header with Official e-Visi Logo */}
+        <div className="p-3.5 border-b border-slate-800/80 bg-slate-950/70">
+          <div className="bg-white rounded-xl p-2 shadow-sm border border-slate-700/50 flex items-center justify-center transition-all hover:border-emerald-500/50 hover:shadow-md">
+            <img 
+              src="/logo.png" 
+              alt="e-Visi Supervisi Guru - Alur GROW" 
+              className="w-full h-11 object-contain" 
+            />
           </div>
-          <div className="overflow-hidden">
-            <h1 className="font-extrabold text-base leading-tight tracking-wide text-amber-400 flex flex-col">
-              <span>E-VISI GURU</span>
-              <span className="text-[11px] font-semibold text-emerald-400 tracking-normal normal-case">
-                Supervisi Akademik SD
+          <div className="mt-2.5 flex items-center justify-between text-[10.5px] text-slate-300 px-0.5">
+            <div className="flex items-center space-x-1.5 overflow-hidden">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0 animate-pulse"></span>
+              <span className="font-bold text-amber-300 truncate uppercase tracking-wider text-[10px]">
+                {settings.schoolName}
               </span>
-            </h1>
-            <p className="text-[9.5px] text-slate-400 font-medium tracking-tight uppercase truncate mt-0.5">
-              {settings.schoolName}
-            </p>
+            </div>
+            <span className="text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold border border-emerald-500/30 flex-shrink-0 ml-1">
+              SD
+            </span>
           </div>
         </div>
 

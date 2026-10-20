@@ -153,10 +153,10 @@ export const AdminDocPrintModal: React.FC<AdminDocPrintModalProps> = ({
         
         {/* Header toolbar */}
         <div className="no-print p-3.5 bg-slate-850 text-white flex flex-wrap justify-between items-center gap-2 border-b border-slate-700/80 flex-shrink-0">
-          <div className="flex items-center space-x-2">
-            <span className="p-1.5 bg-teal-600 text-white rounded-lg text-xs shadow-xs">
-              <FileText className="w-4 h-4" />
-            </span>
+          <div className="flex items-center space-x-2.5">
+            <div className="w-8 h-8 bg-white rounded-lg p-0.5 border border-slate-600 flex items-center justify-center flex-shrink-0 shadow-xs">
+              <img src="/logo.png" alt="e-Visi Logo" className="w-full h-full object-contain" />
+            </div>
             <div>
               <h3 className="font-bold text-sm text-slate-100">
                 {type === 'individual'
