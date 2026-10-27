@@ -110,10 +110,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         };
       case 'guru':
         return {
-          name: 'Siti Rahma, S.Pd',
+          name: 'Lestari Handayani',
           role: 'Guru Kelas 4',
-          email: 'siti.rahma@guru.sd.belajar.id',
-          initials: 'SR',
+          email: 'handayanilestari842@gmail.com',
+          initials: 'LH',
           color: 'bg-indigo-600'
         };
     }

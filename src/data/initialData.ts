@@ -25,72 +25,72 @@ export const INITIAL_SETTINGS: SchoolSettings = {
 export const INITIAL_TEACHERS: Teacher[] = [
   {
     id: 'T1',
-    name: 'Siti Rahma, S.Pd',
-    nip: '199005152015022001',
-    type: 'Guru Kelas',
-    classSubject: 'Kelas 4',
-    status: 'Aktif',
-    phone: '0812-3456-7891',
-    email: 'siti.rahma@guru.sd.belajar.id'
-  },
-  {
-    id: 'T2',
-    name: 'Bambang Wijaya, S.Pd',
-    nip: '198803122014031002',
-    type: 'Guru Kelas',
-    classSubject: 'Kelas 5',
-    status: 'Aktif',
-    phone: '0813-9876-5432',
-    email: 'bambang.wijaya@guru.sd.belajar.id'
-  },
-  {
-    id: 'T3',
-    name: 'Dewi Lestari, S.Pd.SD',
-    nip: '199201102019022003',
-    type: 'Guru Kelas',
-    classSubject: 'Kelas 1',
-    status: 'Aktif',
-    phone: '0857-1122-3344',
-    email: 'dewi.lestari@guru.sd.belajar.id'
-  },
-  {
-    id: 'T4',
-    name: 'Ahmad Fauzi, S.Pd.I',
-    nip: '198607202010011005',
-    type: 'Guru Mata Pelajaran',
-    classSubject: 'Pendidikan Agama Islam',
-    status: 'Aktif',
-    phone: '0821-4455-6677',
-    email: 'ahmad.fauzi@guru.sd.belajar.id'
-  },
-  {
-    id: 'T5',
-    name: 'Rina Kusuma, S.Pd',
-    nip: '199504082020122004',
-    type: 'Guru Mata Pelajaran',
-    classSubject: 'PJOK',
-    status: 'Aktif',
-    phone: '0896-7788-9900',
-    email: 'rina.kusuma@guru.sd.belajar.id'
-  },
-  {
-    id: 'T6',
-    name: 'Eko Prasetyo, S.Pd',
-    nip: '199111242017081003',
+    name: 'Ireliya Austina Prahesti',
+    nip: '199906092024212038',
     type: 'Guru Kelas',
     classSubject: 'Kelas 6',
     status: 'Aktif',
-    phone: '0812-8899-1122',
-    email: 'eko.prasetyo@guru.sd.belajar.id'
+    phone: '088989540295',
+    email: 'pireliya9@gmail.com'
+  },
+  {
+    id: 'T2',
+    name: 'Lestari Handayani',
+    nip: '198412212022212013',
+    type: 'Guru Kelas',
+    classSubject: 'Kelas 4',
+    status: 'Aktif',
+    phone: '082257180688',
+    email: 'handayanilestari842@gmail.com'
+  },
+  {
+    id: 'T3',
+    name: 'LULUK MUNZIYAH',
+    nip: '199511242020122009',
+    type: 'Guru Mata Pelajaran',
+    classSubject: 'Pendidikan Agama Islam',
+    status: 'Aktif',
+    phone: '085895739248',
+    email: 'munziyah7@gmail.com'
+  },
+  {
+    id: 'T4',
+    name: 'MARTHA DIMAS LELY OKTA WIDHANA',
+    nip: '199603052020121011',
+    type: 'Guru Kelas',
+    classSubject: 'Kelas 5',
+    status: 'Aktif',
+    phone: '082336467927',
+    email: 'marthadimas778@gmail.com'
+  },
+  {
+    id: 'T5',
+    name: 'Nevilia Yunitasari',
+    nip: '199006042024212051',
+    type: 'Guru Kelas',
+    classSubject: 'Kelas 1',
+    status: 'Aktif',
+    phone: '085755739160',
+    email: 'safanita00@gmail.com'
+  },
+  {
+    id: 'T6',
+    name: 'Nurul Afifah',
+    nip: '198903122020122013',
+    type: 'Guru Kelas',
+    classSubject: 'Kelas 3',
+    status: 'Aktif',
+    phone: '082131403050',
+    email: 'fifadaipa@gmail.com'
   }
 ];
 
 export const INITIAL_OBSERVATIONS: ObservationData[] = [
   {
     id: 'OBS-2026-001',
-    teacherId: 'T1',
-    teacherName: 'Siti Rahma, S.Pd',
-    nip: '199005152015022001',
+    teacherId: 'T2',
+    teacherName: 'Lestari Handayani',
+    nip: '198412212022212013',
     subject: 'IPAS (Ilmu Pengetahuan Alam & Sosial)',
     classTarget: 'Kelas 4',
     date: '2026-10-02',
@@ -161,7 +161,7 @@ export const INITIAL_OBSERVATIONS: ObservationData[] = [
         status: 'Selesai',
         pic: 'Kepala Sekolah',
         obsId: 'OBS-2026-001',
-        teacherName: 'Siti Rahma, S.Pd'
+        teacherName: 'Lestari Handayani'
       }
     ],
     modulAjar: {
@@ -172,15 +172,15 @@ export const INITIAL_OBSERVATIONS: ObservationData[] = [
       uploadDate: '2 Oktober 2026',
       driveFileId: '1A2b3C4d5E6F_SampleDriveId',
       driveViewLink: 'https://drive.google.com/file/d/1A2b3C4d5E6F_SampleDriveId/view?usp=sharing',
-      uploadedBy: 'Siti Rahma, S.Pd',
+      uploadedBy: 'Lestari Handayani',
       notes: 'Modul ajar lengkap dengan rubrik asesmen diferensiasi dan LKPD'
     }
   },
   {
     id: 'OBS-2026-002',
-    teacherId: 'T2',
-    teacherName: 'Bambang Wijaya, S.Pd',
-    nip: '198803122014031002',
+    teacherId: 'T4',
+    teacherName: 'MARTHA DIMAS LELY OKTA WIDHANA',
+    nip: '199603052020121011',
     subject: 'Matematika',
     classTarget: 'Kelas 5',
     date: '2026-10-08',
@@ -219,9 +219,9 @@ export const INITIAL_OBSERVATIONS: ObservationData[] = [
   },
   {
     id: 'OBS-2026-003',
-    teacherId: 'T3',
-    teacherName: 'Dewi Lestari, S.Pd.SD',
-    nip: '199201102019022003',
+    teacherId: 'T5',
+    teacherName: 'Nevilia Yunitasari',
+    nip: '199006042024212051',
     subject: 'Bahasa Indonesia',
     classTarget: 'Kelas 1',
     date: '2026-09-26',
@@ -288,15 +288,15 @@ export const INITIAL_OBSERVATIONS: ObservationData[] = [
         status: 'Proses',
         pic: 'Kepala Sekolah',
         obsId: 'OBS-2026-003',
-        teacherName: 'Dewi Lestari, S.Pd.SD'
+        teacherName: 'Nevilia Yunitasari'
       }
     ]
   },
   {
     id: 'OBS-2026-004',
-    teacherId: 'T4',
-    teacherName: 'Ahmad Fauzi, S.Pd.I',
-    nip: '198607202010011005',
+    teacherId: 'T3',
+    teacherName: 'LULUK MUNZIYAH',
+    nip: '199511242020122009',
     subject: 'Pendidikan Agama Islam',
     classTarget: 'Kelas 4',
     date: '2026-09-18',
@@ -360,7 +360,7 @@ export const INITIAL_OBSERVATIONS: ObservationData[] = [
         status: 'Direncanakan',
         pic: 'Kepala Sekolah',
         obsId: 'OBS-2026-004',
-        teacherName: 'Ahmad Fauzi, S.Pd.I'
+        teacherName: 'LULUK MUNZIYAH'
       }
     ]
   }

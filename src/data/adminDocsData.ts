@@ -277,9 +277,9 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
   {
     id: 'AUDIT-T1',
     teacherId: 'T1',
-    teacherName: 'Siti Rahma, S.Pd',
-    nip: '199005152015022001',
-    classSubject: 'Kelas 4',
+    teacherName: 'Ireliya Austina Prahesti',
+    nip: '199906092024212038',
+    classSubject: 'Kelas 6',
     semester: 'Ganjil',
     schoolYear: '2025/2026',
     auditDate: '2026-08-20',
@@ -299,7 +299,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
         ...doc,
         status: 'lengkap' as const,
         score: 2,
-        notes: idx === 4 ? 'Modul Ajar IPAS Bab 3 sangat kontekstual dengan lingkungan pegunungan Tosari.' : 'Tersedia lengkap dan telah divalidasi Kepala Sekolah.',
+        notes: idx === 4 ? 'Modul Ajar Kelas 6 sangat kontekstual dengan persiapan asesmen dan lingkungan pegunungan Tosari.' : 'Tersedia lengkap dan telah divalidasi Kepala Sekolah.',
         lastUpdated: '2026-08-19'
       };
     }),
@@ -314,9 +314,9 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
   {
     id: 'AUDIT-T2',
     teacherId: 'T2',
-    teacherName: 'Bambang Wijaya, S.Pd',
-    nip: '198803122014031002',
-    classSubject: 'Kelas 5',
+    teacherName: 'Lestari Handayani',
+    nip: '198412212022212013',
+    classSubject: 'Kelas 4',
     semester: 'Ganjil',
     schoolYear: '2025/2026',
     auditDate: '2026-08-22',
@@ -336,7 +336,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
           ...doc,
           status: 'kurang' as const,
           score: 1,
-          notes: 'Program pengayaan materi matematika perlu bukti hasil tugas siswa.',
+          notes: 'Program pengayaan materi matematika dan IPAS perlu bukti hasil tugas siswa.',
           lastUpdated: '2026-08-21'
         };
       }
@@ -352,16 +352,16 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
     maxScore: 28,
     percentage: 93,
     predicate: 'Sangat Baik',
-    catatanKepsek: 'Perangkat pembelajaran matematika dan tematik lengkap. Buku bimbingan siswa agar dioptimalkan.',
+    catatanKepsek: 'Perangkat pembelajaran Kelas 4 lengkap. Buku bimbingan siswa agar dioptimalkan.',
     tindakLanjut: 'Lakukan tindak lanjut pengayaan dan dokumentasikan karya siswa berprestasi.',
     isVerified: true
   },
   {
     id: 'AUDIT-T3',
     teacherId: 'T3',
-    teacherName: 'Dewi Lestari, S.Pd.SD',
-    nip: '199201102019022003',
-    classSubject: 'Kelas 1',
+    teacherName: 'LULUK MUNZIYAH',
+    nip: '199511242020122009',
+    classSubject: 'Pendidikan Agama Islam',
     semester: 'Ganjil',
     schoolYear: '2025/2026',
     auditDate: '2026-08-25',
@@ -372,7 +372,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
           ...doc,
           status: 'kurang' as const,
           score: 1,
-          notes: 'Rubrik asesmen observasi transisi PAUD-SD perlu ditambahkan rincian kematangan sosial.',
+          notes: 'Rubrik asesmen observasi praktik ibadah dan hafalan perlu ditambahkan kriteria tartil.',
           lastUpdated: '2026-08-24'
         };
       }
@@ -380,7 +380,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
         ...doc,
         status: 'lengkap' as const,
         score: 2,
-        notes: 'Sangat baik untuk fase pondasi awal kelas 1 SD.',
+        notes: 'Sangat baik untuk penanaman nilai budi pekerti dan akidah akhlak.',
         lastUpdated: '2026-08-25'
       };
     }),
@@ -388,16 +388,16 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
     maxScore: 28,
     percentage: 96,
     predicate: 'Sangat Baik',
-    catatanKepsek: 'Modul ajar literasi & numerasi kelas 1 sangat kreatif dan ramah anak.',
-    tindakLanjut: 'Lengkapi portofolio asesmen awal kesiapan membaca murid.',
+    catatanKepsek: 'Modul ajar PAI dan Budi Pekerti tersusun rapi untuk seluruh rombel.',
+    tindakLanjut: 'Lengkapi portofolio asesmen praktik ibadah murid.',
     isVerified: true
   },
   {
     id: 'AUDIT-T4',
     teacherId: 'T4',
-    teacherName: 'Ahmad Fauzi, S.Pd.I',
-    nip: '198607202010011005',
-    classSubject: 'Pendidikan Agama Islam',
+    teacherName: 'MARTHA DIMAS LELY OKTA WIDHANA',
+    nip: '199603052020121011',
+    classSubject: 'Kelas 5',
     semester: 'Ganjil',
     schoolYear: '2025/2026',
     auditDate: '2026-08-28',
@@ -408,7 +408,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
           ...doc,
           status: 'kurang' as const,
           score: 1,
-          notes: 'Modul Ajar kokurikuler terintegrasi dimensi Beriman & Bertakwa masih tahap finalisasi.',
+          notes: 'Modul Ajar kokurikuler P5 masih tahap penyempurnaan rubrik dimensi.',
           lastUpdated: '2026-08-26'
         };
       }
@@ -416,7 +416,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
         ...doc,
         status: 'lengkap' as const,
         score: 2,
-        notes: 'Materi praktik ibadah dan hafalan terstruktur rapi.',
+        notes: 'Materi pembelajaran dan asesmen sumatif Kelas 5 terstruktur rapi.',
         lastUpdated: '2026-08-27'
       };
     }),
@@ -424,16 +424,16 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
     maxScore: 28,
     percentage: 96,
     predicate: 'Sangat Baik',
-    catatanKepsek: 'Perangkat pembelajaran PAI dan Budi Pekerti tersusun rapi untuk seluruh rombel kelas 1 s.d. 6.',
-    tindakLanjut: 'Finalisasi rubrik asesmen P5 tema kearifan lokal keagamaan.',
+    catatanKepsek: 'Perangkat pembelajaran Kelas 5 tersusun rapi dan siap implementasi.',
+    tindakLanjut: 'Finalisasi rubrik asesmen P5 tema kearifan lokal.',
     isVerified: true
   },
   {
     id: 'AUDIT-T5',
     teacherId: 'T5',
-    teacherName: 'Rina Kusuma, S.Pd',
-    nip: '199504082020122004',
-    classSubject: 'PJOK',
+    teacherName: 'Nevilia Yunitasari',
+    nip: '199006042024212051',
+    classSubject: 'Kelas 1',
     semester: 'Ganjil',
     schoolYear: '2025/2026',
     auditDate: '2026-08-29',
@@ -444,16 +444,16 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
           ...doc,
           status: 'kurang' as const,
           score: 1,
-          notes: 'Jurnal harian lapangan belum diisi untuk pertemuan minggu ke-3.',
+          notes: 'Jurnal harian pembelajaran kelas 1 belum diisi untuk 2 pertemuan awal.',
           lastUpdated: '2026-08-28'
         };
       }
       if (doc.id === 'doc-11') {
         return {
           ...doc,
-          status: 'tidak_ada' as const,
-          score: 0,
-          notes: 'Belum membuat buku catatan kesehatan jasmani / fisik khusus peserta didik.',
+          status: 'kurang' as const,
+          score: 1,
+          notes: 'Catatan transisi PAUD ke SD perlu didokumentasikan lebih intensif.',
           lastUpdated: '2026-08-29'
         };
       }
@@ -461,24 +461,24 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
         ...doc,
         status: 'lengkap' as const,
         score: 2,
-        notes: 'Perangkat praktik fisik dan keselamatan olahraga baik.',
+        notes: 'Perangkat pembelajaran membaca permulaan dan numerasi awal sangat baik.',
         lastUpdated: '2026-08-28'
       };
     }),
-    totalScore: 25,
+    totalScore: 26,
     maxScore: 28,
-    percentage: 89,
-    predicate: 'Baik',
-    catatanKepsek: 'Perangkat pembelajaran PJOK cukup baik. Wajib melengkapi buku catatan kesehatan fisik murid.',
-    tindakLanjut: 'Buat lembar rekam kebugaran jasmani murid dan lengkapi jurnal lapangan.',
+    percentage: 93,
+    predicate: 'Sangat Baik',
+    catatanKepsek: 'Perangkat pembelajaran Kelas 1 ramah anak dan kontekstual. Lengkapi catatan transisi siswa.',
+    tindakLanjut: 'Lengkapi jurnal harian kelas dan portofolio asesmen awal literasi.',
     isVerified: true
   },
   {
     id: 'AUDIT-T6',
     teacherId: 'T6',
-    teacherName: 'Eko Prasetyo, S.Pd',
-    nip: '199111242017081003',
-    classSubject: 'Kelas 6',
+    teacherName: 'Nurul Afifah',
+    nip: '198903122020122013',
+    classSubject: 'Kelas 3',
     semester: 'Ganjil',
     schoolYear: '2025/2026',
     auditDate: '2026-08-30',
@@ -488,7 +488,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
         ...doc,
         status: 'lengkap' as const,
         score: 2,
-        notes: 'Dokumen kelas 6 lengkap, persiapan asesmen akhir jenjang SD terprogram baik.',
+        notes: 'Dokumen kelas 3 lengkap, perencanaan diferensiasi proses dan produk terprogram baik.',
         lastUpdated: '2026-08-30'
       };
     }),
@@ -496,7 +496,7 @@ export const INITIAL_TEACHER_ADMIN_AUDITS: TeacherAdminAudit[] = [
     maxScore: 28,
     percentage: 100,
     predicate: 'Sangat Baik',
-    catatanKepsek: 'Perangkat pembelajaran kelas 6 sangat lengkap, akurat, dan siap menghadapi asesmen sumatif akhir jenjang.',
+    catatanKepsek: 'Perangkat pembelajaran Kelas 3 sangat lengkap, rapi, dan inovatif.',
     tindakLanjut: 'Jadikan rujukan pengelolaan arsip pembelajaran bagi kelas lainnya.',
     isVerified: true
   }

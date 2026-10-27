@@ -425,11 +425,17 @@ export function loadSchoolData(schoolId: string): SchoolBundleData {
     teachers = schoolId === 'kandangan-2' ? [...SCHOOL_2_TEACHERS] : [...INITIAL_TEACHERS];
   }
 
+  // Auto-migrate legacy mock data for School 1 to official real teachers
+  const hasLegacyMock = teachers.some(t => t.name.includes('Siti Rahma') || t.name.includes('Bambang Wijaya'));
+  if (hasLegacyMock && (schoolId === 'kandangan-1' || schoolId === 'sch-kandangan-1')) {
+    teachers = [...INITIAL_TEACHERS];
+  }
+
   // 3. Observations
   let observations: ObservationData[];
   try {
     const savedObservations = hasStorage ? localStorage.getItem(`${prefix}_OBSERVATIONS`) : null;
-    if (savedObservations) {
+    if (savedObservations && !hasLegacyMock) {
       observations = JSON.parse(savedObservations);
     } else {
       observations = schoolId === 'kandangan-2' ? [...SCHOOL_2_OBSERVATIONS] : [...INITIAL_OBSERVATIONS];
@@ -442,7 +448,7 @@ export function loadSchoolData(schoolId: string): SchoolBundleData {
   let adminAudits: TeacherAdminAudit[];
   try {
     const savedAudits = hasStorage ? localStorage.getItem(`${prefix}_ADMIN_AUDITS`) : null;
-    if (savedAudits) {
+    if (savedAudits && !hasLegacyMock) {
       const parsed: TeacherAdminAudit[] = JSON.parse(savedAudits);
       adminAudits = syncTeacherAudits(teachers, parsed, settings);
     } else {
@@ -452,6 +458,11 @@ export function loadSchoolData(schoolId: string): SchoolBundleData {
     }
   } catch (e) {
     adminAudits = syncTeacherAudits(teachers, [], settings);
+  }
+
+  // Persist migrated state if legacy data was refreshed
+  if (hasLegacyMock && hasStorage && (schoolId === 'kandangan-1' || schoolId === 'sch-kandangan-1')) {
+    saveSchoolData(schoolId, { settings, teachers, observations, adminAudits });
   }
 
   return {

@@ -45,9 +45,9 @@ describe('authService', () => {
     expect(user2?.email).toBe('akh.shodikin@gmail.com');
 
     // Email with whitespace
-    const user3 = findRegisteredUserByEmail('  siti.rahma@guru.sd.belajar.id  ', INITIAL_SETTINGS, INITIAL_TEACHERS);
+    const user3 = findRegisteredUserByEmail('  pireliya9@gmail.com  ', INITIAL_SETTINGS, INITIAL_TEACHERS);
     expect(user3).not.toBeNull();
-    expect(user3?.name).toBe('Siti Rahma, S.Pd');
+    expect(user3?.name).toBe('Ireliya Austina Prahesti');
   });
 
   it('should return null for unregistered email', () => {

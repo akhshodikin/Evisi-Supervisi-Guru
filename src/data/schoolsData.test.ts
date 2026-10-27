@@ -106,7 +106,7 @@ describe('Multi-School Management & Isolation', () => {
     const teacherNames = school2.teachers.map(t => t.name);
     expect(teacherNames).toContain('Agus Santoso, S.Pd');
     expect(teacherNames).toContain('Nurul Hidayati, S.Pd.SD');
-    expect(teacherNames).not.toContain('Siti Rahma, S.Pd');
+    expect(teacherNames).not.toContain('Ireliya Austina Prahesti');
 
     // 3. Admin Audits Synchronization (every teacher has an audit matching school 2)
     expect(school2.adminAudits.length).toBe(7);
