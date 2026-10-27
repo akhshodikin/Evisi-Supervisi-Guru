@@ -556,11 +556,11 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             </p>
             <div className="p-2.5 bg-white rounded-lg border border-amber-200 font-mono text-[11px] text-slate-700 flex flex-col space-y-1">
               <div className="flex items-center justify-between">
-                <span className="text-emerald-700 font-semibold truncate">https://gen-lang-client-0651384107.web.app</span>
-                <span className="text-[9px] text-slate-400">Default Site</span>
+                <span className="text-emerald-700 font-bold truncate">https://evisi-supervisi-guru.web.app</span>
+                <span className="text-[9px] px-1.5 py-0.2 bg-emerald-100 text-emerald-800 rounded font-semibold">Active Site</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-600 truncate">https://gen-lang-client-0651384107.firebaseapp.com</span>
+                <span className="text-slate-600 truncate">https://evisi-supervisi-guru.firebaseapp.com</span>
                 <span className="text-[9px] text-slate-400">Alias</span>
               </div>
             </div>

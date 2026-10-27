@@ -6,6 +6,7 @@
     "dataAccessMode": "FIRESTORE_NATIVE"
   },
   "hosting": {
+    "site": "evisi-supervisi-guru",
     "public": "dist",
     "ignore": [
       "firebase.json",

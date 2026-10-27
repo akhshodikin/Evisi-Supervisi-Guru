@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "gen-lang-client-0651384107"
+  },
+  "targets": {
+    "gen-lang-client-0651384107": {
+      "hosting": {
+        "evisi-supervisi-guru": [
+          "evisi-supervisi-guru"
+        ]
+      }
+    }
   }
 }
