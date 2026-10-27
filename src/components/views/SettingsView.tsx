@@ -17,7 +17,11 @@ import {
   School,
   ArrowRight,
   CheckCircle2,
-  RefreshCw
+  RefreshCw,
+  Flame,
+  Globe,
+  ExternalLink,
+  ShieldCheck
 } from 'lucide-react';
 
 interface SettingsViewProps {
@@ -509,6 +513,95 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   className="hidden"
                 />
               </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. KARTU GOOGLE FIREBASE & CLOUD HOSTING */}
+      <div className="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-xs space-y-4 text-xs">
+        <div className="border-b border-slate-100 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex items-center space-x-3">
+            <div className="p-2.5 bg-amber-50 text-amber-600 rounded-xl border border-amber-200 flex-shrink-0">
+              <Flame className="w-5 h-5 text-amber-500" />
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 text-sm flex items-center space-x-2">
+                <span>Google Firebase &amp; Cloud Hosting</span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
+                  Terintegrasi
+                </span>
+              </h3>
+              <p className="text-slate-500 text-[11px]">
+                Infrastruktur cloud resmi Google untuk penyimpanan real-time, aturan keamanan, dan penayangan web global.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+          {/* Kolom Kiri: Layanan Hosting */}
+          <div className="p-4 bg-gradient-to-br from-amber-50/60 to-orange-50/40 rounded-xl border border-amber-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-800 text-xs flex items-center space-x-1.5">
+                <Globe className="w-4 h-4 text-amber-600" />
+                <span>Google Firebase Hosting</span>
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-md font-semibold bg-amber-200/60 text-amber-900 border border-amber-300">
+                SSL Aktif (HTTPS)
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-600 leading-relaxed">
+              Aplikasi dapat di-deploy ke jaringan CDN global Google dengan alamat resmi:
+            </p>
+            <div className="p-2.5 bg-white rounded-lg border border-amber-200 font-mono text-[11px] text-slate-700 flex flex-col space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-emerald-700 font-semibold truncate">https://gen-lang-client-0651384107.web.app</span>
+                <span className="text-[9px] text-slate-400">Default Site</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-600 truncate">https://gen-lang-client-0651384107.firebaseapp.com</span>
+                <span className="text-[9px] text-slate-400">Alias</span>
+              </div>
+            </div>
+            <div className="p-2.5 bg-amber-100/70 border border-amber-200 rounded-lg text-[10.5px] text-amber-900 space-y-1">
+              <p className="font-bold">🚀 Cara Cepat Deploy ke Firebase:</p>
+              <p>• Klik ganda file <code className="bg-white/80 px-1 py-0.5 rounded font-mono font-bold text-amber-800">deploy-firebase.bat</code> di folder aplikasi.</p>
+              <p>• Atau jalankan perintah <code className="bg-white/80 px-1 py-0.5 rounded font-mono font-bold text-amber-800">bun run deploy:hosting</code> di terminal.</p>
+            </div>
+          </div>
+
+          {/* Kolom Kanan: Cloud Firestore & Keamanan */}
+          <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-800 text-xs flex items-center space-x-1.5">
+                <Database className="w-4 h-4 text-emerald-600" />
+                <span>Cloud Firestore (Multi-School)</span>
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-md font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                Real-Time Sync
+              </span>
+            </div>
+            <div className="space-y-2 text-[11px]">
+              <div className="flex items-center justify-between py-1 border-b border-slate-200">
+                <span className="text-slate-500">Project ID</span>
+                <span className="font-mono font-bold text-slate-800">gen-lang-client-0651384107</span>
+              </div>
+              <div className="flex items-center justify-between py-1 border-b border-slate-200">
+                <span className="text-slate-500">Database ID</span>
+                <span className="font-mono text-[10px] text-slate-700 truncate max-w-[180px]">ai-studio-supervisiguru-f060...</span>
+              </div>
+              <div className="flex items-center justify-between py-1 border-b border-slate-200">
+                <span className="text-slate-500">Security Rules</span>
+                <span className="text-emerald-700 font-semibold flex items-center space-x-1">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>firestore.rules (RBAC Aktif)</span>
+                </span>
+              </div>
+              <div className="flex items-center justify-between py-1">
+                <span className="text-slate-500">Isolasi 2 Lembaga</span>
+                <span className="text-amber-700 font-semibold">SDN Kandangan I &amp; II Terpisah</span>
+              </div>
             </div>
           </div>
         </div>

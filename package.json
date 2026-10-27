@@ -9,7 +9,11 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "test": "bun test"
+    "test": "bun test",
+    "firebase:login": "firebase login",
+    "deploy:hosting": "vite build && firebase deploy --only hosting",
+    "deploy:firestore": "firebase deploy --only firestore:rules",
+    "deploy:firebase": "vite build && firebase deploy"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -29,14 +33,15 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
+    "firebase-tools": "^15.34.1",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.21.0",
-    "typescript": "^7.0.2",
-    "@types/express": "^4.17.21"
+    "typescript": "^7.0.2"
   }
 }
