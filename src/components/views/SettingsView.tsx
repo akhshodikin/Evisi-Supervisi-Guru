@@ -394,8 +394,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             {/* Showcase Banner Logo Resmi Aplikasi e-Visi */}
             <div className="mt-3 p-3.5 bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 text-white">
               <div className="flex items-center space-x-3.5">
-                <div className="w-20 h-13 bg-white rounded-xl p-1.5 shadow-sm border border-slate-600 flex items-center justify-center flex-shrink-0">
-                  <img src="/logo.png" alt="e-Visi Supervisi Guru" className="max-w-full max-h-full object-contain" />
+                <div className="h-14 w-auto min-w-[110px] max-w-[150px] bg-white rounded-xl px-2.5 py-1 shadow-sm border border-slate-600 flex items-center justify-center flex-shrink-0">
+                  <img src="/logo.png" alt="e-Visi Supervisi Guru" className="h-full w-auto object-contain" />
                 </div>
                 <div>
                   <h5 className="font-bold text-xs text-amber-400">Logo Resmi Aplikasi e-Visi Supervisi Guru</h5>

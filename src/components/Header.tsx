@@ -88,13 +88,13 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="no-print mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl shadow-xs border border-slate-200/80">
-      <div className="flex items-center space-x-3">
-        <div className="w-11 h-11 bg-white rounded-xl border border-slate-200 p-1 flex items-center justify-center flex-shrink-0 shadow-2xs hover:shadow-xs transition">
-          <img src="/logo.png" alt="e-Visi Supervisi Guru" className="w-full h-full object-contain" />
+      <div className="flex items-center space-x-3 min-w-0">
+        <div className="h-12 w-auto min-w-[96px] max-w-[140px] bg-white rounded-xl border border-slate-200/90 px-2 py-1 flex items-center justify-center flex-shrink-0 shadow-xs hover:border-emerald-300 transition-all">
+          <img src="/logo.png" alt="e-Visi Supervisi Guru" className="h-full w-auto object-contain" />
         </div>
-        <div>
-          <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">{title}</h2>
-          <p className="text-xs text-slate-500 leading-normal">{subtitle}</p>
+        <div className="min-w-0">
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-tight truncate">{title}</h2>
+          <p className="text-xs text-slate-500 leading-normal truncate">{subtitle}</p>
         </div>
       </div>
 

@@ -143,8 +143,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 text-white p-5 rounded-2xl shadow-md border border-slate-800">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div className="flex items-center space-x-3.5">
-            <div className="w-20 h-13 bg-white rounded-xl p-1.5 shadow-sm border border-slate-700/60 hidden sm:flex items-center justify-center flex-shrink-0">
-              <img src="/logo.png" alt="e-Visi Supervisi Guru Alur GROW" className="max-w-full max-h-full object-contain" />
+            <div className="h-14 w-auto min-w-[110px] max-w-[150px] bg-white rounded-xl px-2.5 py-1 shadow-sm border border-slate-700/60 hidden sm:flex items-center justify-center flex-shrink-0">
+              <img src="/logo.png" alt="e-Visi Supervisi Guru Alur GROW" className="h-full w-auto object-contain" />
             </div>
             <div>
               <div className="flex items-center space-x-2">

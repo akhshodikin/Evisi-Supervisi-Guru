@@ -163,12 +163,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <aside className="no-print bg-slate-900 text-white w-full md:w-64 flex-shrink-0 transition-all duration-200 flex flex-col justify-between shadow-xl border-r border-slate-800">
       <div>
         {/* Brand Header with Official e-Visi Logo */}
-        <div className="p-3.5 border-b border-slate-800/80 bg-slate-950/70">
-          <div className="bg-white rounded-xl p-2 shadow-sm border border-slate-700/50 flex items-center justify-center transition-all hover:border-emerald-500/50 hover:shadow-md">
+        <div className="p-3 border-b border-slate-800/80 bg-slate-950/70">
+          <div className="bg-white rounded-xl py-2 px-3 shadow-sm border border-slate-700/50 flex items-center justify-center transition-all hover:border-emerald-500/50 hover:shadow-md">
             <img 
               src="/logo.png" 
               alt="e-Visi Supervisi Guru - Alur GROW" 
-              className="w-full h-11 object-contain" 
+              className="w-full h-16 sm:h-18 object-contain" 
             />
           </div>
           <div className="mt-2.5 flex items-center justify-between text-[10.5px] text-slate-300 px-0.5">

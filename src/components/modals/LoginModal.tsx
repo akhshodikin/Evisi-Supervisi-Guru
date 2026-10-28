@@ -166,8 +166,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({
         {/* Header */}
         <div className="p-4 sm:p-5 bg-gradient-to-r from-slate-900 to-slate-800 text-white flex justify-between items-center border-b border-slate-700 flex-shrink-0">
           <div className="flex items-center space-x-3">
-            <div className="w-11 h-11 rounded-xl bg-white p-1 border border-slate-600/80 flex items-center justify-center flex-shrink-0 shadow-md">
-              <img src="/logo.png" alt="e-Visi Supervisi Guru Logo" className="w-full h-full object-contain" />
+            <div className="h-12 w-auto min-w-[90px] max-w-[130px] rounded-xl bg-white px-2.5 py-1 border border-slate-600/80 flex items-center justify-center flex-shrink-0 shadow-md">
+              <img src="/logo.png" alt="e-Visi Supervisi Guru Logo" className="h-full w-auto object-contain" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
